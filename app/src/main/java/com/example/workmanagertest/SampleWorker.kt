@@ -18,7 +18,7 @@ class SampleWorker(context: Context, workerParams: WorkerParameters) : Worker(co
             try {
                 val rwm = RemoteWorkManager.getInstance(context)
                 Util.d(context,"RemoteWorkManager hash ${rwm.hashCode()}")
-                rwm.beginUniqueWork(
+                rwm.enqueueUniqueWork(
                         "SampleWorker",
                         ExistingWorkPolicy.REPLACE,
                         OneTimeWorkRequest.from(SampleWorker::class.java)
